@@ -1,7 +1,6 @@
-import { student } from './student'
+let student = require('./student');
 var express = require('express');
 var router = express.Router();
-let mongoDB = global.app.get("mongoDB");
 let http = require('http');
 var io = require('socket.io')(http.createServer());
 
@@ -9,8 +8,6 @@ var io = require('socket.io')(http.createServer());
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express'});
 });
-
-router.use('student', student);
 
 io.on('connection', function (socket) {
     console.log('socket已连接！');
